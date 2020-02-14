@@ -38,10 +38,11 @@ def valid_proof(last_hash, proof):
 
     IE:  last_hash: ...AE9123456, new hash 123456E88...
     """
+    last_hash = hashlib.sha256(last_hash).encode().hexdigest()
+    new_hash = hashlib.sha256(proof).encode().hexdigest()
 
-    # TODO: Your code here!
-    pass
-
+    #last 6 and first 6
+    return last_hash[-6:] == new_hash[:6]
 
 if __name__ == '__main__':
     # What node are we interacting with?
